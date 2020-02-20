@@ -19,10 +19,9 @@ app.use(bodyParser.json());
 
 
 function getUrl(stackData){
-	let str="[";
-	let i;
-	for(i = 0; i < Object.keys( stackData['items']).length; i++){
-		let obj = 
+	let requestData = [];
+	for(let i = 0; i < Object.keys( stackData['items']).length; i++){
+		let reqElement = 
 				{
 					"type": "section",
 					"text": {
@@ -30,12 +29,10 @@ function getUrl(stackData){
 						"text": "<" + stackData['items'][i]['link'] +'|'+ stackData['items'][i]['title']+">\n"
 					}
 				}
-		str += JSON.stringify(obj);
-		str+= ",";
+		requestData.push(reqElement);
 	}
-	str = str.slice(0,-1);
-	str+="]";
-	return str;
+	requestStr = JSON.stringify(requestData);
+	return requestStr;
 }
 
 app.post('/', (req, res) => {
