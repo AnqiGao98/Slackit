@@ -26,7 +26,8 @@ function getUrl(stackData){
 					"type": "section",
 					"text": {
 						"type": "mrkdwn",
-						"text": "<" + stackData['items'][i]['link'] +'|'+ stackData['items'][i]['title']+">\n"
+						"text": '|StackOverflow '+ stackData['items'][i]["answer_count"] +' Answers| '+ 
+							"<" + stackData['items'][i]['link'] +'|'+ decodeURI(stackData['items'][i]['title'])+">\n"
 					}
 				}
 		requestData.push(reqElement);
